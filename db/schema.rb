@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20140509044655) do
     t.text     "description",                         null: false
     t.string   "isbn",        limit: 13,              null: false
     t.string   "image",                               null: false
-    t.integer  "viewed",      limit: 5,   default: 0, null: false
+    t.integer  "viewed",      limit: 8,   default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20140509044655) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["book_id"], name: "index_comments_on_book_id"
+  add_index "comments", ["book_id"], name: "index_comments_on_book_id", using: :btree
 
   create_table "ratings", force: true do |t|
     t.integer  "book_id"
@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 20140509044655) do
     t.datetime "updated_at"
   end
 
-  add_index "ratings", ["book_id"], name: "index_ratings_on_book_id"
-  add_index "ratings", ["comment_id"], name: "index_ratings_on_comment_id"
+  add_index "ratings", ["book_id"], name: "index_ratings_on_book_id", using: :btree
+  add_index "ratings", ["comment_id"], name: "index_ratings_on_comment_id", using: :btree
 
   create_table "tags", force: true do |t|
     t.integer  "book_id"
@@ -66,6 +66,6 @@ ActiveRecord::Schema.define(version: 20140509044655) do
     t.datetime "updated_at"
   end
 
-  add_index "tags", ["book_id"], name: "index_tags_on_book_id"
+  add_index "tags", ["book_id"], name: "index_tags_on_book_id", using: :btree
 
 end
