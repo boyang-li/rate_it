@@ -8,7 +8,7 @@ Hardware and Software Requirements
 
 - Ruby (2.1.1)
 - Ruby on Rails (4.1.0)
-- SQLite3
+- SQLite3 (come with Ruby gem)
 
 Installation Instructions
 -------------------------
@@ -17,11 +17,11 @@ Installation Instructions
 
 		git clone "https://github.com/boyang-li/rate_it.git"
 
-2. Bundle gems:
+2. In the app directory, run Bundle commands to install gems:
 
 		bundle install
 
-3. Setup database:  
+3. Run Rake commands to setup database:  
 
 	Run migrations:
 
@@ -30,3 +30,7 @@ Installation Instructions
 	Populate testing data
 
 	  `rake db:seed`
+	  
+4. Run server, and app will be running at 'localhost:3000'
+
+	  `rails server`

@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.0'
-gem 'mysql2'
+gem 'sqlite3'
+#gem 'mysql2'
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
