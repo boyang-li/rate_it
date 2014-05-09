@@ -4,9 +4,10 @@ gem 'rails', '4.1.0'
 gem 'sqlite3'
 
 gem 'jquery-rails'
-gem 'simple_form'
 gem 'jbuilder', '~> 2.0'
 gem 'turbolinks'
+gem 'simple_form'
+gem 'faker'
 
 # gems for LESS compiler and Bootstrap
 gem "therubyracer"
@@ -18,7 +19,6 @@ group :development do
   # gem 'annotate'
   gem 'better_errors'
   gem 'spring'
-  # Use Capistrano for deployment
   # gem 'capistrano-rails'
 end
 
