@@ -45,10 +45,10 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Rate it!</a>
+        <%= link_to "Books", root_path, :class => "navbar-brand"  %>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Books", "/path1"  %></li>
+            <li><%= link_to "Books", books_path  %></li>
             <li><%= link_to "Ratings", "/path2"  %></li>
             <li><%= link_to "Comments", "/path3"  %></li>
           </ul>
@@ -62,11 +62,6 @@
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
-      <footer>
-        <p>&copy; Company 2014</p>
-      </footer>
-
     </div> <!-- /container -->
-
   </body>
 </html>

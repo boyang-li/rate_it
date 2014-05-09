@@ -1,22 +1,11 @@
 class Rating < ActiveRecord::Base
 	belongs_to :book
 
-	validates :author, :text, presence: :true
+	before_create :set_rating
 
-	def get_avg_rating(book_id)
-		total = 0
-		count = 0
-		avg = 0.0
+	validates :rating, presence: :true
 
-		ratings = Rating.where(book_id: book_id)
-		ratings.each do |r|
-			total += r.rating
-			count += 1
-		end
-
-		if count > 0
-			avg = total / count
-		end
-		avg
+	def set_rating
+		self.rating = self.rating.to_i
 	end
 end

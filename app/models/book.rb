@@ -16,4 +16,23 @@ class Book < ActiveRecord::Base
 	def self.latest
 		Book.order(:updated_at).last
 	end
+
+	def get_avg_rating
+		total = 0.0
+		count = 0
+		avg = 0.0
+
+		ratings = Rating.where(book_id: self.id)
+		ratings.each do |r|
+			total += r.rating
+			count += 1
+		end
+
+		if count > 0
+			avg = (total / count).round(1)
+		else
+			avg = 0
+		end
+		avg
+	end
 end

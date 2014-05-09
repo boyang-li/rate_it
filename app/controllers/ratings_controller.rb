@@ -24,17 +24,9 @@ class RatingsController < ApplicationController
   # POST /ratings
   # POST /ratings.json
   def create
-    @rating = Rating.new(rating_params)
-
-    respond_to do |format|
-      if @rating.save
-        format.html { redirect_to @rating, notice: 'Rating was successfully created.' }
-        format.json { render :show, status: :created, location: @rating }
-      else
-        format.html { render :new }
-        format.json { render json: @rating.errors, status: :unprocessable_entity }
-      end
-    end
+    @book= Book.find(params[:book_id])
+    @rating = @book.ratings.create(rating_params)
+    redirect_to book_path(@book)
   end
 
   # PATCH/PUT /ratings/1
@@ -69,6 +61,6 @@ class RatingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rating_params
-      params[:rating]
+      params.require(:rating).permit(:rating)
     end
 end

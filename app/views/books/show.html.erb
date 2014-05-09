@@ -1,7 +1,7 @@
 <%- model_class = Book -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
-</div>
+  <%= image_tag(@book.image) %>
+</div><!-- Page header ends -->
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
@@ -12,11 +12,14 @@
   <dd><%= @book.description %></dd>
   <dt><strong><%= model_class.human_attribute_name(:isbn) %>:</strong></dt>
   <dd><%= @book.isbn %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:image) %>:</strong></dt>
-  <dd><%= @book.image %></dd>
   <dt><strong><%= model_class.human_attribute_name(:viewed) %>:</strong></dt>
   <dd><%= @book.viewed %></dd>
 </dl>
+
+<!-- Button trigger modal -->
+<button class="btn btn-success" data-toggle="modal" data-target="#ratingModal">
+  Rate it!
+</button>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               books_path, :class => 'btn btn-default'  %>
@@ -27,3 +30,26 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+
+<!-- Rating modal -->
+<div class="modal fade" id="ratingModal" tabindex="-1" role="dialog" aria-labelledby="ratingModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="ratingModalLabel">Add rating: </h4>
+    </div>
+    <div class="modal-body">
+    <%= simple_form_for([@book, @book.ratings.build]) do |f| %>
+      <p>
+        <%= f.label :rating %><br>
+        <%= f.select :rating, 1..5 %>
+      </p>
+      <p>
+        <%= f.submit %>
+      </p>
+    <% end %>
+    </div>
+  </div>
+  </div>
+</div><!-- Rating modal ends -->

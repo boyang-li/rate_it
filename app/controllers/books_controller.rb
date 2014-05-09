@@ -71,4 +71,10 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit(:name, :author, :description, :isbn, :image, :viewed)
     end
+
+    def set_session
+      book = Book.find(params[:id])
+
+      session[:current_book_id] = book_id
+    end
 end
