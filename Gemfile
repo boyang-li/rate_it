@@ -7,6 +7,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'turbolinks'
 gem 'simple_form'
+gem 'will_paginate', '~> 3.0'
 gem 'faker'
 
 # gems for LESS compiler and Bootstrap

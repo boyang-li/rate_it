@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
-	has_many :ratings
+	has_many :ratings, dependent: :destroy
 	has_many :comments
 	has_many :tags
 	has_many :categorizations
