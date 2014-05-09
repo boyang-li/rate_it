@@ -3,7 +3,7 @@ class CreateRatings < ActiveRecord::Migration
     create_table :ratings do |t|
       t.references :book, index: true
       t.references :comment, index: true
-      t.integer :rating, limit: 1
+      t.integer :rating, limit: 1, null: false
       t.timestamps
     end
   end

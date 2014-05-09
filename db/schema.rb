@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20140509044655) do
   create_table "ratings", force: true do |t|
     t.integer  "book_id"
     t.integer  "comment_id"
-    t.integer  "rating",     limit: 1
+    t.integer  "rating",     limit: 1, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
