@@ -26,7 +26,17 @@ class RatingsController < ApplicationController
   def create
     @book= Book.find(params[:book_id])
     @rating = @book.ratings.create(rating_params)
-    redirect_to book_path(@book)
+    # redirect_to book_path(@book)
+
+    respond_to do |format|
+      if @rating.save
+        format.html { redirect_to @book, notice: 'Rating was successfully added.' }
+        format.json { render :show, status: :created, location: @book }
+      else
+        format.html { render :new }
+        format.json { render json: @book.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /ratings/1
